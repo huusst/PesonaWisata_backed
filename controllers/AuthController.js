@@ -1,7 +1,133 @@
 const db = require("../models");
 const tbl_Otp = db.tbl_Otp;
+const tbl_wisatawan = db.tbl_Wisatawan;
 const otpGenerator = require('otp-generator');
 const nodemailer = require('nodemailer');
+const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+
+const Login = async (req, res) => {
+    let id
+    let name
+    let email
+    let password
+    
+    try {
+        const user_wisatawan = await tbl_wisatawan.findOne({
+            where: {
+                email: req.body.email,
+            },
+        });
+  
+        // const user_admin = await tbl_user.findOne({
+        //     where: {
+        //         user_email: req.body.email,
+        //     },
+        // });
+  
+        if (!user_wisatawan) {
+            return res.status(400).json({ msg: "Akun Anda tidak terdaftar!" });
+        }
+  
+        if (user_wisatawan) {
+            const match = await bcrypt.compare(
+                req.body.password,
+                user_wisatawan.password
+            );
+            if (!match) {
+                return res.status(400).json({ msg: "Password Anda salah" });
+            }
+
+            id = user_wisatawan.id_wisatawan
+            name = user_wisatawan.name
+            email = user_wisatawan.email
+            password = user_wisatawan.password
+        }
+  
+        // if (user_admin) {
+        //     const match = await bcrypt.compare(
+        //         req.body.password,
+        //         user_admin.user_password
+        //     );
+        //     if (!match) {
+        //         return res.status(400).json({ msg: "Password User Anda salah" });
+        //     }
+        //     name = user_admin.user_username
+        //     email = user_admin.user_email
+        //     uuid = user_admin.user_uuid
+        //     password = user_admin.user_password    
+        // }
+  
+        const token = jwt.sign(
+            {
+                id, 
+                email,
+                password,
+            }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRE_IN}
+        );
+  
+        // Set cookie
+        res.cookie('token', token, { httpOnly: true });
+        res.status(200).json({
+            message: "Login Berhasil",
+            data:{
+                name,
+                email
+            } });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Terjadi kesalahan pada server" });
+    }
+};
+  
+const Me = async (req, res) =>{
+    let id
+    let name
+    let role
+    
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(401).json({ msg: "Akun Belum Login!" });
+    }
+  
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        id = decoded.id;
+  
+        const user_wisatawan = await tbl_wisatawan.findOne({
+            attributes:['id_wisatawan', 'name'],
+            where: {
+                id_wisatawan: id
+            }
+        });
+        
+        // const user_admin = await tbl_user.findOne({
+        //     attributes:['user_uuid', 'user_username'],
+        //     where: {
+        //         user_uuid: uuid
+        //     }
+        // });
+        
+        if (!user_wisatawan) { 
+            return res.status(404).json({ msg: "User tidak ditemukan" });
+        } 
+        // else if (user_admin) {
+        //     name = user_admin['user_username'];
+        //     level = 'administrator';
+        // } 
+        else if (user_wisatawan) {
+            name = user_wisatawan['name'];
+            role = 'wisatawan';
+        }
+  
+        res.status(200).json({ id, name, role });
+    } catch (error) {
+        console.error(error);
+        // res.clearCookie('token');
+        res.status(500).json({ msg: "Terjadi kesalahan pada server", error });
+    }
+}
 
 const sendOtp = async (req, res) => {
     try {
@@ -145,8 +271,16 @@ const VerifOtp = async (req, res) => {
     }
 };
 
+const logOut = (req, res) => {
+    res.clearCookie('token');
+    res.status(200).json({ msg: "Anda telah berhasil logout" });
+  };
+
 
 module.exports = {
+    Login,
+    Me,
+    logOut,
     sendOtp,
     VerifOtp
 }; 

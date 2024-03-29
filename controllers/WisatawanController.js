@@ -1,5 +1,7 @@
 const db = require("../models");
 const tbl_wisatawan = db.tbl_Wisatawan;
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 
 const checkExistEmailWisatawan = async (req, res) => {
@@ -38,12 +40,14 @@ const checkExistEmailWisatawan = async (req, res) => {
 const post_wisatawan = async (req, res) => {
   try {
     const { name, no_hp, email, password } = req.body;
+    
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const data = await tbl_wisatawan.create({
-      name,
-      no_hp,
-      email,
-      password,
+      name: name,
+      no_hp: no_hp,
+      email: email,
+      password: hashedPassword,
     });
 
     return res.status(200).json({
