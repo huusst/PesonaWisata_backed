@@ -19,12 +19,6 @@ const Login = async (req, res) => {
             },
         });
   
-        // const user_admin = await tbl_user.findOne({
-        //     where: {
-        //         user_email: req.body.email,
-        //     },
-        // });
-  
         if (!user_wisatawan) {
             return res.status(400).json({ msg: "Akun Anda tidak terdaftar!" });
         }
@@ -44,36 +38,35 @@ const Login = async (req, res) => {
             password = user_wisatawan.password
         }
   
-        // if (user_admin) {
-        //     const match = await bcrypt.compare(
-        //         req.body.password,
-        //         user_admin.user_password
-        //     );
-        //     if (!match) {
-        //         return res.status(400).json({ msg: "Password User Anda salah" });
-        //     }
-        //     name = user_admin.user_username
-        //     email = user_admin.user_email
-        //     uuid = user_admin.user_uuid
-        //     password = user_admin.user_password    
-        // }
-  
         const token = jwt.sign(
             {
                 id, 
                 email,
                 password,
-            }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRE_IN}
+            }, process.env.JWT_SECRET, {expiresIn: '10s'}
         );
+
+        const token_refresh = jwt.sign(
+            {
+                id, 
+                email,
+                password,
+            }, process.env.JWT_REFRESH_SECRET, {expiresIn: '1d'}
+        );
+
+        await tbl_wisatawan.update({ refresh_token: token_refresh }, {
+            where: {
+                id_wisatawan: id,
+            },
+        });
   
-        // Set cookie
-        res.cookie('token', token, { httpOnly: true });
-        res.status(200).json({
-            message: "Login Berhasil",
-            data:{
-                name,
-                email
-            } });
+        res.cookie('refreshtoken', token_refresh, {
+             httpOnly: true,
+             maxAge: 24 * 60 * 60 * 1000
+            });
+
+        res.status(200).json({ message: "Login Berhasil",  token });
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ msg: "Terjadi kesalahan pada server" });
@@ -85,10 +78,10 @@ const Me = async (req, res) =>{
     let name
     let role
     
-    const token = req.cookies.token;
+    const token = req.cookies.refreshtoken;
 
     if (!token) {
-        return res.status(401).json({ msg: "Akun Belum Login!" });
+        return res.status(401).json({ msg: "Akun Belum Login!", token });
     }
   
     try {
@@ -96,32 +89,21 @@ const Me = async (req, res) =>{
         id = decoded.id;
   
         const user_wisatawan = await tbl_wisatawan.findOne({
-            attributes:['id_wisatawan', 'name'],
+            attributes:['id_wisatawan', 'name', 'profile'],
             where: {
                 id_wisatawan: id
             }
         });
         
-        // const user_admin = await tbl_user.findOne({
-        //     attributes:['user_uuid', 'user_username'],
-        //     where: {
-        //         user_uuid: uuid
-        //     }
-        // });
-        
         if (!user_wisatawan) { 
             return res.status(404).json({ msg: "User tidak ditemukan" });
         } 
-        // else if (user_admin) {
-        //     name = user_admin['user_username'];
-        //     level = 'administrator';
-        // } 
         else if (user_wisatawan) {
             name = user_wisatawan['name'];
             role = 'wisatawan';
         }
   
-        res.status(200).json({ id, name, role });
+        res.status(200).json({ user_wisatawan, role });
     } catch (error) {
         console.error(error);
         // res.clearCookie('token');
@@ -208,7 +190,7 @@ const sendOtp = async (req, res) => {
         return res.status(200).json({
             status: 200,
             success: true,
-            message: "OTP sent successfully!",
+            message: "OTP sent successfully, check your Email!",
         });
 
     } catch (error) {
@@ -271,8 +253,28 @@ const VerifOtp = async (req, res) => {
     }
 };
 
-const logOut = (req, res) => {
-    res.clearCookie('token');
+const logOut = async (req, res) => {
+    const token = req.cookies.refreshtoken;
+    
+    if (!token) {
+        return res.status(401).json({ msg: "Akun Belum Login!", token });
+    }
+    
+    const user_wisatawan = await tbl_wisatawan.findOne({
+        where: {
+            refresh_token: token,
+        },
+    });
+
+    const id = user_wisatawan.id_wisatawan;
+
+    await tbl_wisatawan.update({ refresh_token: null }, {
+        where: {
+            id_wisatawan: id,
+        },
+    });
+
+    res.clearCookie('refreshtoken');
     res.status(200).json({ msg: "Anda telah berhasil logout" });
   };
 

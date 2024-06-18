@@ -23,13 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     email_user: DataTypes.STRING,
     otp: DataTypes.STRING,
     expiryTime: DataTypes.DATE,
-    // status_otp: {
-    //   type: DataTypes.ENUM('active', 'non active', 'expired'),
-    //   defaultValue: 'active'
-    // },
   }, {
     sequelize,
     modelName: 'tbl_Otp',
+    tableName: 'tbl_Otp',
   });
   return tbl_Otp;
 };

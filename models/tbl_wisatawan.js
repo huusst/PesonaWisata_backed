@@ -24,13 +24,12 @@ module.exports = (sequelize, DataTypes) => {
     no_hp: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    // status_email: {
-    //   type: DataTypes.ENUM('active', 'non active'),
-    //   defaultValue: 'non active'
-    // },
+    profile: DataTypes.STRING,
+    refresh_token: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'tbl_Wisatawan',
+    tableName: 'tbl_wisatawan',
   });
   return tbl_Wisatawan;
 };

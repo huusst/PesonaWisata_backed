@@ -48,12 +48,13 @@ const post_wisatawan = async (req, res) => {
       no_hp: no_hp,
       email: email,
       password: hashedPassword,
+      profile: "default.jpg"
     });
 
     return res.status(200).json({
       status: 200,
       success: true,
-      message: "new Wisatawan created",
+      message: "Registrasi Berhasil",
       data: {
         data: data,
       },

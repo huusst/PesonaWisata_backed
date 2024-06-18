@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('tbl_Otps', {
+    await queryInterface.createTable('tbl_Otp', {
       id_otp: {
         allowNull: false,
         autoIncrement: true,
@@ -19,10 +19,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      // status_otp: {
-      //   type: Sequelize.ENUM('active', 'non active', 'expired'),
-      //   defaultValue: 'active'
-      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -34,6 +30,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('tbl_Otps');
+    await queryInterface.dropTable('tbl_Otp');
   }
 };

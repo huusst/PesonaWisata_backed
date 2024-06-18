@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('tbl_Wisatawans', {
+    await queryInterface.createTable('tbl_Wisatawan', {
       id_wisatawan: {
         allowNull: false,
         autoIncrement: true,
@@ -21,10 +21,12 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      // status_email: { 
-      //   type: Sequelize.ENUM('active', 'non active'),
-      //   defaultValue: 'non active'
-      // },
+      profile: {
+        type: Sequelize.STRING
+      },
+      refresh_token: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -36,6 +38,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('tbl_Wisatawans');
+    await queryInterface.dropTable('tbl_Wisatawan');
   }
 };
