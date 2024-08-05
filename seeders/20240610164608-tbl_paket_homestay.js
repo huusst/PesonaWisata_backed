@@ -1,4 +1,5 @@
 'use strict';
+const moment = require('moment-timezone');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -10,8 +11,8 @@ module.exports = {
         deskripsi_paket_homestay: 'Homestay satu ini memiliki bangunan rapi bertingkat 2, dimana pada lantai 2 Anda bisa menikmati suasana desa Dieng, melihat danau maupun hutan dengan suhu udara yang sejuk.',
         harga: 200000,
         sampul_paket_homestay: 'http://localhost:3001/uploads/img/penginapan/homestay.png',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 4,
@@ -19,8 +20,8 @@ module.exports = {
         deskripsi_paket_homestay: 'Homestay satu ini memiliki bangunan rapi bertingkat 2, dimana pada lantai 2 Anda bisa menikmati suasana desa Dieng, melihat danau maupun hutan dengan suhu udara yang sejuk.',
         harga: 220000,
         sampul_paket_homestay: 'http://localhost:3001/uploads/img/penginapan/homestay.png',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
     ], {});
   },

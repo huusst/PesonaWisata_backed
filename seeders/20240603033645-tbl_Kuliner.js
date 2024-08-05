@@ -1,4 +1,5 @@
 'use strict';
+const moment = require('moment-timezone');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -20,8 +21,11 @@ module.exports = {
         kontak_person_kuliner: "082432432243",
         status_buka:'Buka',
         status_kuliner: 'Pribadi',
-        status_verifikasi: 'verifed',
-        total_pengunjung_kuliner: 25
+        status_verifikasi: 'verified',
+        total_pengunjung_kuliner: 0,
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_desaWisata: 1,
@@ -39,8 +43,11 @@ module.exports = {
         kontak_person_kuliner: "082432432243",
         status_buka:'Buka',
         status_kuliner: 'Pribadi',
-        status_verifikasi: 'verifed',
-        total_pengunjung_kuliner: 23
+        status_verifikasi: 'verified',
+        total_pengunjung_kuliner: 0,
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_desaWisata: 1,
@@ -58,8 +65,33 @@ module.exports = {
         kontak_person_kuliner: "082432432242",
         status_buka:'Buka',
         status_kuliner: 'Pribadi',
-        status_verifikasi: 'verifed',
-        total_pengunjung_kuliner: 18
+        status_verifikasi: 'verified',
+        total_pengunjung_kuliner: 0,
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
+      },
+      {
+        id_desaWisata: 1,
+        id_admin: 7,
+        id_admin_verifed: 2,
+        nama_kuliner: 'Resto Amanah',
+        nib_kuliner: null,
+        kbli_kuliner: null,
+        alamat_kuliner: 'Jl. Karas - Karangrejo, RT.05/RW.03, Karas, Kec. Karas, Kabupaten Magetan, Jawa Timur 63395',
+        npwp_kuliner: null,
+        npwp_pemilik_kuliner: null,
+        maps_kuliner: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.0155118020098!2d111.38329707484195!3d-7.5732869924409405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79eb56d4a9257f%3A0x4663c58d4cc22432!2sAmanah%20Resto!5e0!3m2!1sid!2sid!4v1721112703649!5m2!1sid!2sid',
+        sampul_kuliner: 'http://localhost:3001/uploads/img/kuliner/RestoAmanah.png',
+        ruang_kuliner: '',
+        kontak_person_kuliner: "082432432242",
+        status_buka:'Buka',
+        status_kuliner: 'Pribadi',
+        status_verifikasi: 'verified',
+        total_pengunjung_kuliner: 0,
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
     ]);
   },

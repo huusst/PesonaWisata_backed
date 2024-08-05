@@ -16,7 +16,7 @@ const get_all_kuliner = async (req, res) => {
 
     const whereClause = {
       [Op.and]: [
-          { status_verifikasi: 'verifed' },
+          { status_verifikasi: 'verified' },
           keyword ? {
               [Op.or]: [
                   { nama_kuliner: { [Op.like]: `%${keyword}%` } },
@@ -174,7 +174,7 @@ const get_all_kuliner_ByDesawisata = async (req, res) => {
     const whereClause = {
       [Op.and]: [
           { id_desaWisata },
-          { status_verifikasi: 'verifed' },
+          { status_verifikasi: 'verified' },
           keyword ? {
               [Op.or]: [
                   { nama_kuliner: { [Op.like]: `%${keyword}%` } },

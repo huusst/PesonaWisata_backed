@@ -12,14 +12,20 @@ module.exports = {
       id_table: {
         type: Sequelize.INTEGER
       },
+      id_admin_verifed: {
+        type: Sequelize.INTEGER
+      },
       nama_table: {
         type: Sequelize.STRING
       },
       tahun_data_pengunjung: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       bulan_data_pengunjung: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
+      },
+      jumlah_pengunjung_aplikasi: {
+        type: Sequelize.INTEGER
       },
       jumlah_pengunjung_lokal: {
         type: Sequelize.INTEGER
@@ -32,6 +38,10 @@ module.exports = {
       },
       jumlah_pegawai_perempuan: {
         type: Sequelize.INTEGER
+      },
+      status_verifikasi: {
+        type: Sequelize.ENUM('verified', 'unverified', 'rejected'),
+        defaultValue: 'unverified'
       },
       createdAt: {
         allowNull: false,

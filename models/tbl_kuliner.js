@@ -29,6 +29,9 @@ module.exports = (sequelize, DataTypes) => {
     id_admin_verifed: {
       type: DataTypes.INTEGER
     },
+    id_admin_pengelola: {
+      type: DataTypes.INTEGER
+    },
     nama_kuliner: {
       type: DataTypes.STRING
     },
@@ -48,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     maps_kuliner: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     sampul_kuliner: {
       type: DataTypes.STRING
@@ -69,9 +72,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM('Pribadi', 'Bumdes', 'Pemda'),
     },
     status_verifikasi: {
-      type: DataTypes.ENUM('verifed', 'unverifed'),
-      defaultValue: 'unverifed'
+      type: DataTypes.ENUM('verified', 'unverified'),
+      defaultValue: 'unverified'
     }, 
+    id_admin_author: {
+      type: DataTypes.INTEGER
+    },
   }, {
     sequelize,
     modelName: 'tbl_Kuliner',

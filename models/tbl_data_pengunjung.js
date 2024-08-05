@@ -23,14 +23,20 @@ module.exports = (sequelize, DataTypes) => {
     id_table: {
       type: DataTypes.INTEGER
     },
+    id_admin_verifed: {
+      type: DataTypes.INTEGER
+    },
     nama_table: {
       type: DataTypes.STRING
     },
     tahun_data_pengunjung: {
-      type: DataTypes.STRING
+      type: DataTypes.INTEGER
     },
     bulan_data_pengunjung: {
-      type: DataTypes.STRING
+      type: DataTypes.INTEGER
+    },
+    jumlah_pengunjung_aplikasi: {
+      type: DataTypes.INTEGER
     },
     jumlah_pengunjung_lokal: {
       type: DataTypes.INTEGER
@@ -43,6 +49,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     jumlah_pegawai_perempuan: {
       type: DataTypes.INTEGER
+    },
+    status_verifikasi: {
+      type: DataTypes.ENUM('verified', 'unverified', 'rejected'),
+      defaultValue: 'unverified'
     },
   }, {
     sequelize,

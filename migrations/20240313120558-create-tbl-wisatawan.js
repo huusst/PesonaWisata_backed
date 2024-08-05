@@ -12,6 +12,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      nama_lengkap: {
+        type: Sequelize.STRING
+      },
       no_hp: {
         type: Sequelize.STRING
       },

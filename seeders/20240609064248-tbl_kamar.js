@@ -1,4 +1,5 @@
 'use strict';
+const moment = require('moment-timezone');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -13,8 +14,8 @@ module.exports = {
         jumlah_kamar: 10,
         bebas_rokok: 'true',
         fasilitas_sarapan: 'true',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 1,
@@ -25,8 +26,8 @@ module.exports = {
         jumlah_kamar: 15,
         bebas_rokok: 'true',
         fasilitas_sarapan: 'false',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 1,
@@ -37,8 +38,8 @@ module.exports = {
         jumlah_kamar: 5,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'true',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 2,
@@ -49,8 +50,8 @@ module.exports = {
         jumlah_kamar: 5,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'false',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 2,
@@ -61,8 +62,8 @@ module.exports = {
         jumlah_kamar: 3,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'false',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 2,
@@ -73,8 +74,8 @@ module.exports = {
         jumlah_kamar: 3,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'true',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 2,
@@ -85,8 +86,8 @@ module.exports = {
         jumlah_kamar: 5,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'false',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 2,
@@ -97,8 +98,8 @@ module.exports = {
         jumlah_kamar: 5,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'true',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 3,
@@ -109,8 +110,8 @@ module.exports = {
         jumlah_kamar: 4,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'false',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 3,
@@ -121,8 +122,8 @@ module.exports = {
         jumlah_kamar: 5,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'false',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_penginapan: 3,
@@ -133,8 +134,8 @@ module.exports = {
         jumlah_kamar: 5,
         bebas_rokok: 'false',
         fasilitas_sarapan: 'true',
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
     ], {});
   },

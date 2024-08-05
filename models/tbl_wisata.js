@@ -33,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
     id_admin_verifed: {
       type: DataTypes.INTEGER
     },
+    id_admin_pengelola: {
+      type: DataTypes.INTEGER
+    },
     nama_destinasi: {
       type: DataTypes.STRING
     },
@@ -55,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     },
     maps_destinasi: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     sampul_destinasi: {
       type: DataTypes.STRING
@@ -65,6 +68,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     harga_tiket: {
       type: DataTypes.INTEGER
+    },
+    status_jalan: {
+      type: DataTypes.ENUM('1', '2', '3'),
+    },
+    jenis_kendaraan: {
+      type: DataTypes.ENUM('1', '2', '3'),
+    },
+    jumlah_fasilitas: {
+      type: DataTypes.INTEGER,
     },
     kontak_person_destinasi: {
       type: DataTypes.STRING
@@ -79,6 +91,9 @@ module.exports = (sequelize, DataTypes) => {
     total_pengunjung_destinasi: {
       type: DataTypes.INTEGER
     }, 
+    id_admin_author: {
+      type: DataTypes.INTEGER
+    },
   }, {
     sequelize,
     modelName: 'tbl_Wisata',

@@ -18,6 +18,9 @@ module.exports = {
       id_admin_verifed: {
         type: Sequelize.INTEGER
       },
+      id_admin_pengelola: {
+        type: Sequelize.INTEGER
+      },
       nama_destinasi: {
         type: Sequelize.STRING
       },
@@ -40,7 +43,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       maps_destinasi: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       sampul_destinasi: {
         type: Sequelize.STRING
@@ -50,6 +53,15 @@ module.exports = {
       },
       harga_tiket: {
         type: Sequelize.INTEGER
+      },
+      status_jalan: {
+        type: Sequelize.ENUM('1', '2', '3'),
+      },
+      jenis_kendaraan: {
+        type: Sequelize.ENUM('1', '2', '3'),
+      },
+      jumlah_fasilitas: {
+        type: Sequelize.INTEGER,
       },
       kontak_person_destinasi: {
         type: Sequelize.STRING
@@ -61,8 +73,11 @@ module.exports = {
         type: Sequelize.ENUM('Pribadi', 'Bumdes', 'Pemda'),
       },
       status_verifikasi: {
-        type: Sequelize.ENUM('verifed', 'unverifed'),
-        defaultValue: 'unverifed'
+        type: Sequelize.ENUM('verified', 'unverified'),
+        defaultValue: 'unverified'
+      },
+      id_admin_author: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

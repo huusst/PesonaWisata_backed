@@ -15,7 +15,13 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    id_admin_pemilik: {
+      type: DataTypes.INTEGER
+    },
     nama_admin: {
+      type: DataTypes.STRING
+    },
+    namaLengkap_admin: {
       type: DataTypes.STRING
     },
     email_admin: {
@@ -25,7 +31,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     role: {
-      type: DataTypes.ENUM('admin', 'dinas', 'pengelola', 'industri')
+      type: DataTypes.ENUM('admin', 'dinas', 'admin pengelola', 'admin industri', 'user pengelola', 'user industri')
+    },
+    nip_admin: {
+      type: DataTypes.STRING
     },
     nohp_admin: {
       type: DataTypes.STRING
@@ -39,6 +48,12 @@ module.exports = (sequelize, DataTypes) => {
     status_akun: {
       type: DataTypes.ENUM('aktif', 'suspend'),
       defaultValue: 'aktif'
+    },
+    refresh_token: {
+      type: DataTypes.TEXT
+    },
+    id_admin_author: {
+      type: DataTypes.INTEGER
     },
   }, {
     sequelize,

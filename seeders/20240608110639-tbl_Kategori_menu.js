@@ -1,4 +1,5 @@
 'use strict';
+const moment = require('moment-timezone');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -7,47 +8,86 @@ module.exports = {
       {
         id_kuliner: 1,
         id_admin: 7,
-        nama_kategori_menu : "Makanan"
+        nama_kategori_menu : "Makanan",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 2,
         id_admin: 7,
-        nama_kategori_menu : "Makanan"
+        nama_kategori_menu : "Makanan",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 3,
         id_admin: 7,
-        nama_kategori_menu : "Makanan"
+        nama_kategori_menu : "Makanan",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
+      },
+      {
+        id_kuliner: 4,
+        id_admin: 7,
+        nama_kategori_menu : "Makanan",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 1,
         id_admin: 7,
-        nama_kategori_menu : "Minuman"
+        nama_kategori_menu : "Minuman",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 2,
         id_admin: 7,
-        nama_kategori_menu : "Minuman"
+        nama_kategori_menu : "Minuman",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 3,
         id_admin: 7,
-        nama_kategori_menu : "Minuman"
+        nama_kategori_menu : "Minuman",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
+      },
+      {
+        id_kuliner: 4,
+        id_admin: 7,
+        nama_kategori_menu : "Minuman",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 1,
         id_admin: 7,
-        nama_kategori_menu : "Snack"
+        nama_kategori_menu : "Snack",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 2,
         id_admin: 7,
-        nama_kategori_menu : "Snack"
+        nama_kategori_menu : "Snack",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_kuliner: 3,
         id_admin: 7,
-        nama_kategori_menu : "Snack"
+        nama_kategori_menu : "Snack",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
+      },
+      {
+        id_kuliner: 4,
+        id_admin: 7,
+        nama_kategori_menu : "Snack",
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
     ]);
   },

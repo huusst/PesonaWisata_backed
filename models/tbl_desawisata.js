@@ -34,6 +34,9 @@ module.exports = (sequelize, DataTypes) => {
     id_admin: {
       type: DataTypes.INTEGER
     },
+    id_admin_verifed: {
+      type: DataTypes.INTEGER
+    },
     nama_desaWisata: {
       type: DataTypes.STRING
     },
@@ -45,10 +48,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     kontak_person_desawisata: {
       type: DataTypes.STRING
-    }, 
+    },
     total_pengunjung: {
       type: DataTypes.INTEGER
     }, 
+    id_admin_author: {
+      type: DataTypes.INTEGER
+    },
+    status_verifikasi: {
+      type: DataTypes.ENUM('verified', 'unverified'),
+      defaultValue: 'unverified'
+    },
   }, {
     sequelize,
     modelName: 'tbl_DesaWisata',

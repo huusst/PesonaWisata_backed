@@ -11,7 +11,6 @@ const get_all_kategori_menu_byKuliner = async (req, res) => {
     if (!id_kuliner) {
       return res.status(400).send({ error: "id_kuliner is required" });
     }
-
     
     const data = await tbl_Kategori_menu.findAndCountAll({
       where: { id_kuliner },

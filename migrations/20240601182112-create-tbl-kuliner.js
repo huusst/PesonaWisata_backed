@@ -18,6 +18,9 @@ module.exports = {
       id_admin_verifed: {
         type: Sequelize.INTEGER
       },
+      id_admin_pengelola: {
+        type: Sequelize.INTEGER
+      },
       nama_kuliner: {
         type: Sequelize.STRING
       },
@@ -37,7 +40,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       maps_kuliner: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       sampul_kuliner: {
         type: Sequelize.STRING
@@ -58,8 +61,11 @@ module.exports = {
         type: Sequelize.ENUM('Pribadi', 'Bumdes', 'Pemda'),
       },
       status_verifikasi: {
-        type: Sequelize.ENUM('verifed', 'unverifed'),
-        defaultValue: 'unverifed'
+        type: Sequelize.ENUM('verified', 'unverified'),
+        defaultValue: 'unverified'
+      },
+      id_admin_author: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

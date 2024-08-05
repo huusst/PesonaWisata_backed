@@ -7,7 +7,11 @@ const r_Kuliner = require("./api/r_Kuliner");
 const r_Kategori_Kuliner = require("./api/r_Kategori_Menu_Kuliner ");
 const r_Menu_Kuliner = require("./api/r_Menu_Kuliner");
 const r_Penginapan = require("./api/r_Penginapan");
+const r_Pesanan = require("./api/r_Transaksi");
+const r_Admin = require("./api/r_Admin");
+const r_Pengelola = require("./api/r_Pengelola");
+const r_pengunjung = require("./api/r_DataPengunjung");
 
-router.use("/api", r_wisatawan, r_Auth, r_Desawisata, r_Wisata, r_Kuliner, r_Penginapan, r_Kategori_Kuliner, r_Menu_Kuliner);
+router.use("/api", r_pengunjung, r_Pengelola, r_Admin, r_wisatawan, r_Auth, r_Desawisata, r_Wisata, r_Kuliner, r_Penginapan, r_Kategori_Kuliner, r_Menu_Kuliner, r_Pesanan);
 
 module.exports = router;

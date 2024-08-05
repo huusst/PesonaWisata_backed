@@ -1,4 +1,5 @@
 'use strict';
+const moment = require('moment-timezone');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
     return queryInterface.bulkInsert('tbl_Penginapan', [
       {
         id_desaWisata: 1,
-        id_admin: 3,
+        id_admin: 8,
         id_admin_verifed: 2,
         nama_penginapan: 'Aston Madiun Hotel',
         nib_penginapan: null,
@@ -20,13 +21,16 @@ module.exports = {
         ruang_penginapan: '',
         kontak_person_penginapan: "0824324322432",
         status_penginapan: 'Pribadi',
-        status_verifikasi: 'verifed',
-        total_pengunjung_penginapan: 40,
+        status_verifikasi: 'verified',
+        total_pengunjung_penginapan: 0,
         kategori_penginapan: 'Hotel',
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_desaWisata: 1,
-        id_admin: 3,
+        id_admin: 8,
         id_admin_verifed: 2,
         nama_penginapan: 'Merdeka Madiun Hotel',
         nib_penginapan: null,
@@ -40,13 +44,16 @@ module.exports = {
         ruang_penginapan: '',
         kontak_person_penginapan: "0824324322432",
         status_penginapan: 'Pribadi',
-        status_verifikasi: 'verifed',
-        total_pengunjung_penginapan: 25,
+        status_verifikasi: 'verified',
+        total_pengunjung_penginapan: 0,
         kategori_penginapan: 'Hotel',
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_desaWisata: 1,
-        id_admin: 3,
+        id_admin: 8,
         id_admin_verifed: 2,
         nama_penginapan: 'The Sun Hotel',
         nib_penginapan: null,
@@ -60,13 +67,16 @@ module.exports = {
         ruang_penginapan: '',
         kontak_person_penginapan: "0824324322432",
         status_penginapan: 'Pribadi',
-        status_verifikasi: 'verifed',
-        total_pengunjung_penginapan: 30,
+        status_verifikasi: 'verified',
+        total_pengunjung_penginapan: 0,
         kategori_penginapan: 'Hotel',
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
       {
         id_desaWisata: 1,
-        id_admin: 3,
+        id_admin: 8,
         id_admin_verifed: 2,
         nama_penginapan: 'Joko homestay',
         nib_penginapan: null,
@@ -75,14 +85,17 @@ module.exports = {
         npwp_penginapan: null,
         npwp_pemilik_penginapan: null,
         kelas_penginapan: "2",
-        harga_terendah_penginapan: "",
+        harga_terendah_penginapan: "200000",
         sampul_penginapan: 'http://localhost:3001/uploads/img/penginapan/homestay.png',
         ruang_penginapan: '',
         kontak_person_penginapan: "081807050492",
         status_penginapan: 'Pribadi',
-        status_verifikasi: 'verifed',
-        total_pengunjung_penginapan: 8,
+        status_verifikasi: 'verified',
+        total_pengunjung_penginapan: 0,
         kategori_penginapan: 'Homestay',
+        id_admin_author: 1,
+        createdAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss"),
+        updatedAt: moment().tz("Asia/Jakarta").format("YYYY-MM-DD HH:mm:ss")
       },
     ]);
   },

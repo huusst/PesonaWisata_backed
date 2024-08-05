@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      tbl_Wisatawan.hasMany(models.tbl_pembayaran, {
+        foreignKey: 'id_wisatawan',
+        sourceKey: 'id_wisatawan',
+        as: "pembayaran_detail_as",
+      });
     }
   }
   tbl_Wisatawan.init({
@@ -21,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER(50),
     },
     name: DataTypes.STRING,
+    nama_lengkap: DataTypes.STRING,
     no_hp: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,

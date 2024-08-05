@@ -25,7 +25,7 @@ const get_all_penginapan = async (req, res) => {
 
     const whereClause = {
       [Op.and]: [
-        { status_verifikasi: 'verifed' },
+        { status_verifikasi: 'verified' },
         keyword ? {
           [Op.or]: [
             { nama_penginapan: { [Op.like]: `%${keyword}%` } },
@@ -247,7 +247,7 @@ const get_all_penginapan_ByDesawisata = async (req, res) => {
     const whereClause = {
       [Op.and]: [
         { id_desaWisata },
-        { status_verifikasi: 'verifed' },
+        { status_verifikasi: 'verified' },
         keyword ? {
           [Op.or]: [
             { nama_penginapan: { [Op.like]: `%${keyword}%` } },

@@ -18,8 +18,8 @@ module.exports = {
       id_destinasi: {
         type: Sequelize.INTEGER
       },
-      id_kuliner: {
-        type: Sequelize.INTEGER
+      nama_destinasi: {
+        type: Sequelize.STRING
       },
       kode_pesanan: {
         type: Sequelize.STRING
@@ -29,6 +29,12 @@ module.exports = {
       },
       tgl_booking: {
         type: Sequelize.DATE
+      },
+      total_pesanan: {
+        type: Sequelize.INTEGER
+      },
+      status_pesanan: {
+        type: Sequelize.ENUM('keranjang', 'proses', 'selesai'),
       },
       createdAt: {
         allowNull: false,

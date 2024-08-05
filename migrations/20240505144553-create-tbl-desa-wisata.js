@@ -12,6 +12,9 @@ module.exports = {
       id_admin: {
         type: Sequelize.INTEGER
       },
+      id_admin_verifed: {
+        type: Sequelize.INTEGER
+      },
       nama_desaWisata: {
         type: Sequelize.STRING
       },
@@ -27,6 +30,13 @@ module.exports = {
       total_pengunjung: {
         type: Sequelize.INTEGER
       }, 
+      id_admin_author: {
+        type: Sequelize.INTEGER
+      },
+      status_verifikasi: {
+        type: Sequelize.ENUM('verified', 'unverified'),
+        defaultValue: 'unverified'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,16 +1,17 @@
 require('dotenv').config();
 const express = require("express");
 const app = express();
-const database = require("./models");
+// const database = require("./models");
 const route = require('./routes/route');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+// const moment = require('moment-timezone');
 
 
 app.use(cookieParser());
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000'}));
+  origin: (['http://localhost:3002', 'http://localhost:3003'])}));
 
 // database.sequelize
 //   .sync({ force: false })
@@ -29,9 +30,18 @@ app.use(route);
 
 app.get("/", (req, res) => {
   res.json({
-    message: "REST API Server Pesona Wisata",
+    message: "Welcome server GoMadiun",
   });
 });
+
+// app.get('/current-time', (req, res) => {
+//   const currentYear = new Date().getFullYear();
+//   const currentMonth = new Date().getMonth() + 1; 
+//   res.json({
+//       currentYear,
+//       currentMonth
+//   });
+// });
 
 app.use('/uploads/img/profile', express.static('uploads/img/profile'));
 app.use('/uploads/img/desawisata', express.static('uploads/img/desawisata'));
@@ -42,5 +52,5 @@ app.use('/uploads/img/penginapan/gallery', express.static('uploads/img/penginapa
 app.use('/uploads/img/menu', express.static('uploads/img/menu'));
 
 app.listen(process.env.PORT, () => {
-  console.log("Server running on port 3001");
+  console.log(`Server running on port ${process.env.PORT}`);
 });
